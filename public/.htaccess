@@ -1,0 +1,17 @@
+#   _                                                     
+#  (_)    A self-hosted ShareX image serving solution.    
+#   _ _ __ ___   __ _  __ _  ___  ___  ___ _ ____   _____ 
+#  | | '_ ` _ \ / _` |/ _` |/ _ \/ __|/ _ \ '__\ \ / / _ \
+#  | | | | | | | (_| | (_| |  __/\__ \  __/ |   \ V /  __/
+#  |_|_| |_| |_|\__,_|\__, |\___||___/\___|_|    \_/ \___|
+#                      __/ |                              
+#                     |___/   created by github.com/aerouk
+
+Options +Indexes
+RewriteEngine On
+
+RewriteRule  ^/?$             /viewer.php                    [L]
+
+RewriteRule  ^g/([^/\.]+)/?$  /viewer.php?type=gif&file=$1   [L]
+RewriteRule  ^j/([^/\.]+)/?$  /viewer.php?type=jpeg&file=$1  [L]
+RewriteRule  ^([^/\.]+)/?$    /viewer.php?type=png&file=$1   [L]

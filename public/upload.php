@@ -20,7 +20,7 @@ if ($_FILES['image']['type'] == "image/png") {
     $hash = generateNewHash("png");
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $dir . "png/$hash.png")) {
-        die("success," . RAW_IMAGE_LINK ? "images/png/$hash.png" : $hash);
+        die("success," . (RAW_IMAGE_LINK ? "images/png/$hash.png" : $hash));
     }
 
     die("error,e-503");
@@ -28,7 +28,7 @@ if ($_FILES['image']['type'] == "image/png") {
     $hash = generateNewHash("jpeg");
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $dir . "jpeg/$hash.jpg")) {
-        die("success," . RAW_IMAGE_LINK ? "images/jpeg/$hash.jpg" : "j/$hash");
+        die("success," . (RAW_IMAGE_LINK ? "images/jpeg/$hash.jpg" : "j/$hash"));
     }
 
     die("error,e-503");
@@ -36,7 +36,7 @@ if ($_FILES['image']['type'] == "image/png") {
     $hash = generateNewHash("gif");
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $dir . "gif/$hash.gif")) {
-        die("success," . RAW_IMAGE_LINK ? "images/gif/$hash.gif" : "g/$hash");
+        die("success," . (RAW_IMAGE_LINK ? "images/gif/$hash.gif" : "g/$hash"));
     }
 
     die("error,e-503");

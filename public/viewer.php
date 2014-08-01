@@ -12,19 +12,21 @@ if ($index) {
 $type = $_GET['type'];
 $file = $_GET['file'];
 
+$filelocation = __DIR__ . "/images/$type/$file.$type";
+
+if ( ! file_exists($filelocation)) {
+    header("HTTP/1.0 404 Not Found");
+    include_once(__DIR__ . '/../app/templates/error.phtml');
+    die();
+}
+
+$filesize = filesize($filelocation);
+
 if (RAW_IMAGE) {
-    $filelocation = __DIR__ . "/images/$type/$file.$type";
-
-    if ( ! file_exists($filelocation)) {
-        header("HTTP/1.0 404 Not Found");
-        include_once(__DIR__ . '/../app/templates/error.phtml');
-        die();
-    }
-
     $filecontents = fopen($filelocation, 'rb');
 
     header("Content-type: image/$type");
-    header("Content-length: " . filesize($filelocation));
+    header("Content-length: " . $filesize);
 
     fpassthru($filecontents);
     exit;
@@ -33,16 +35,6 @@ if (RAW_IMAGE) {
     $time = explode(' ', $time);
     $time = $time[1] + $time[0];
     $start = $time;
-
-    $filelocation = __DIR__ . "/images/$type/$file.$type";
-
-    if ( ! file_exists($filelocation)) {
-        header("HTTP/1.0 404 Not Found");
-        include_once(__DIR__ . '/../app/templates/error.phtml');
-        die();
-    }
-
-    $filesize = filesize($filelocation);
 
     require_once(__DIR__ . '/../app/templates/viewer.phtml');
 }

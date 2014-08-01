@@ -13,5 +13,7 @@
 /* https://github.com/aerouk/imageserve/wiki/Configuration */
 
 define('RAW_IMAGE', true);
+define('RAW_IMAGE_LINK', true);
 
+define('APP_NAME', "application name");
 define('PASSKEY', "password goes here");

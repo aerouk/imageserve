@@ -14,6 +14,13 @@ $file = $_GET['file'];
 
 if (RAW_IMAGE) {
     $filelocation = __DIR__ . "/images/$type/$file.$type";
+
+    if ( ! file_exists($filelocation)) {
+        header("HTTP/1.0 404 Not Found");
+        include_once(__DIR__ . '/../app/templates/error.phtml');
+        die();
+    }
+
     $filecontents = fopen($filelocation, 'rb');
 
     header("Content-type: image/$type");
@@ -22,5 +29,7 @@ if (RAW_IMAGE) {
     fpassthru($filecontents);
     exit;
 } else {
+    $filelocation = __DIR__ . "/images/$type/$file.$type";
+
     require_once(__DIR__ . '/../app/templates/viewer.phtml');
 }

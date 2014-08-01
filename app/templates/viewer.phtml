@@ -1,11 +1,19 @@
+<?php
+    if ($type == "jpeg") {
+        $stype = "jpg";
+    } else {
+        $stype = $type;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title><?php echo APP_NAME . " - $file.$type"; ?></title>
+        <title><?php echo APP_NAME . " - $file.$stype"; ?></title>
+        <link rel="stylesheet" href="/assets/css/style.css">
     </head>
 
     <body>
-        
+        <img src="/images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
     </body>
 </html>

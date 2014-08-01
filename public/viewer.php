@@ -29,7 +29,13 @@ if (RAW_IMAGE) {
     fpassthru($filecontents);
     exit;
 } else {
+    $time = microtime();
+    $time = explode(' ', $time);
+    $time = $time[1] + $time[0];
+    $start = $time;
+
     $filelocation = __DIR__ . "/images/$type/$file.$type";
+    $filesize = filesize($filelocation);
 
     require_once(__DIR__ . '/../app/templates/viewer.phtml');
 }

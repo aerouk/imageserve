@@ -14,6 +14,20 @@
     </head>
 
     <body>
-        <img src="/images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
+        <h1><?php echo "$file.$type"; ?> &middot; <abbr title="Value rounded to the nearest kb.">~<?php echo round($filesize / 1024, 0); ?>kb</abbr></h1>
+
+        <div class="container">
+            <img src="/images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
+        </div>
+
+        <?php
+            $time = microtime();
+            $time = explode(' ', $time);
+            $time = $time[1] + $time[0];
+            $finish = $time;
+            $total_time = round(($finish - $start), 4);
+        ?>
+
+        <p><a href="https://github.com/aerouk/imageserve">Powered by <b>imageserve</b></a> &middot; Page generated in <?php echo $total_time; ?> seconds</p>
     </body>
 </html>

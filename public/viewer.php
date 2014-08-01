@@ -35,6 +35,13 @@ if (RAW_IMAGE) {
     $start = $time;
 
     $filelocation = __DIR__ . "/images/$type/$file.$type";
+
+    if ( ! file_exists($filelocation)) {
+        header("HTTP/1.0 404 Not Found");
+        include_once(__DIR__ . '/../app/templates/error.phtml');
+        die();
+    }
+
     $filesize = filesize($filelocation);
 
     require_once(__DIR__ . '/../app/templates/viewer.phtml');

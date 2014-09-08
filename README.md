@@ -4,11 +4,9 @@ A ShareX image hosting solution for your own domain.
 
 ## application setup
 
-N.B. The setup guide below is for Apache webservers.
-
-1. Extract the contents of the .zip archive into your webserver directory.
-2. Ensure the DirectoryRoot for the webserver is set to the `public/` directory.
-3. Configure the values in the `app/config/config.php` to suit your webserver setup.
+* Drag the contents of the `public/` directory into your webserver (in a folder, if you desire)
+* Configure the options in the `public/protected/config/config.php` file
+* Ensure the `public/images/` directory is writable by the web server
 
 ## ShareX setup
 

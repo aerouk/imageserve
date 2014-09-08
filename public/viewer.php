@@ -1,11 +1,11 @@
 <?php
 
-require_once(__DIR__ . '/../app/config/config.php');
+require_once(__DIR__ . '/protected/config/config.php');
 
 $index = ! (isset($_GET['type']) && isset($_GET['file']));
 
 if ($index) {
-    include_once(__DIR__ . '/../app/templates/index.phtml');
+    include_once(__DIR__ . '/protected/templates/index.phtml');
     die();
 }
 
@@ -16,7 +16,7 @@ $filelocation = __DIR__ . "/images/$type/$file.$type";
 
 if ( ! file_exists($filelocation)) {
     header("HTTP/1.0 404 Not Found");
-    include_once(__DIR__ . '/../app/templates/error.phtml');
+    include_once(__DIR__ . '/protected/templates/error.phtml');
     die();
 }
 
@@ -36,5 +36,5 @@ if (RAW_IMAGE) {
     $time = $time[1] + $time[0];
     $start = $time;
 
-    require_once(__DIR__ . '/../app/templates/viewer.phtml');
+    require_once(__DIR__ . '/protected/templates/viewer.phtml');
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../app/config/config.php');
+require_once(__DIR__ . '/protected/config/config.php');
 
 if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
     die("error,e-401");

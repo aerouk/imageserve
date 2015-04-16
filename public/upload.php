@@ -54,6 +54,6 @@ function generateNewHash($type)
     if ( ! file_exists(__DIR__ . '/images/' . $type . '/' . $str)) {
         return $str;
     } else {
-        generateNewHash($type);
+        return generateNewHash($type);
     }
 }

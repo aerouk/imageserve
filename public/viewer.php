@@ -9,7 +9,7 @@ if ($index) {
     die();
 }
 
-$type = $_GET['type'];
+$type = str_replace("jpeg", "jpg", $_GET['type']);
 $file = $_GET['file'];
 
 $filelocation = __DIR__ . "/images/$type/$file.$type";

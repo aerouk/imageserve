@@ -15,5 +15,7 @@
 define('RAW_IMAGE', false);
 define('RAW_IMAGE_LINK', false);
 
+define('TWITTER_CARDS', true);
+
 define('APP_NAME', "application name");
 define('PASSKEY', "password goes here");

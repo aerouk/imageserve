@@ -1,9 +1,5 @@
 <?php
-    if ($type == "jpeg") {
-        $stype = "jpg";
-    } else {
-        $stype = $type;
-    }
+    $stype = ($type == "jpeg") ? "jpg" : $type;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +7,23 @@
         <meta charset="UTF-8">
         <title><?php echo APP_NAME . " - $file.$stype"; ?></title>
         <link rel="stylesheet" href="/assets/css/style.css">
+<?php if (TWITTER_CARDS) { ?>
+        <meta name="twitter:card" content="photo" />
+        <meta name="twitter:site" content="@your_twitter_username" />
+        <meta name="twitter:title" content="<?php echo $file . '.' . $stype; ?>" />
+        <meta name="twitter:image" content="http://<?php echo $_SERVER['SERVER_NAME']; ?>/images/<?php echo "$type/$file.$stype"; ?>" />
+        <meta name="twitter:url" content="http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
+<?php } ?>
     </head>
 
     <body>
-        <h1><?php echo "$file.$type"; ?> &middot; <abbr title="Value rounded to the nearest kb.">~<?php echo round($filesize / 1024, 0); ?>kb</abbr></h1>
+        <h1>
+            <?php echo "$file.$stype"; ?> &middot;
+
+            <abbr title="Value rounded to the nearest kb.">
+                ~<?php echo round($filesize / 1024, 0); ?>kb
+            </abbr>
+        </h1>
 
         <div class="container">
             <img src="/images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
@@ -28,6 +37,12 @@
             $total_time = round(($finish - $start), 4);
         ?>
 
-        <p><a href="https://github.com/aerouk/imageserve">Powered by <b>imageserve</b></a> &middot; Page generated in <?php echo $total_time; ?> seconds</p>
+        <p>
+            <a href="https://github.com/aerouk/imageserve">
+                Powered by <b>imageserve</b>
+            </a>
+
+            &middot; Page generated in <?php echo $total_time; ?> seconds
+        </p>
     </body>
 </html>

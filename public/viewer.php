@@ -22,7 +22,7 @@ if ( ! file_exists($filelocation)) {
 
 $filesize = filesize($filelocation);
 
-if (RAW_IMAGE) {
+if (RAW_IMAGE && strpos($_SERVER['HTTP_USER_AGENT'], "Twitterbot") === false) {
     $filecontents = fopen($filelocation, 'rb');
 
     header("Content-type: image/$type");

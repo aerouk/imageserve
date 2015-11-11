@@ -10,8 +10,8 @@
 Options +Indexes
 RewriteEngine On
 
-RewriteRule  ^/?$             /viewer.php                    [L]
+RewriteRule  ^/?$               viewer.php                      [L]
 
-RewriteRule  ^g/([^/\.]+)/?$  /viewer.php?type=gif&file=$1   [L]
-RewriteRule  ^j/([^/\.]+)/?$  /viewer.php?type=jpeg&file=$1  [L]
-RewriteRule  ^([^/\.]+)/?$    /viewer.php?type=png&file=$1   [L]
+RewriteRule  ^g/([^/\.]+)/?$    viewer.php?type=gif&file=$1     [L]
+RewriteRule  ^j/([^/\.]+)/?$    viewer.php?type=jpeg&file=$1    [L]
+RewriteRule  ^([^/\.]+)/?$      viewer.php?type=png&file=$1     [L]

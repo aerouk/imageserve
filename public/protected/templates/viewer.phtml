@@ -6,12 +6,12 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo APP_NAME . " - $file.$stype"; ?></title>
-        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 <?php if (TWITTER_CARDS) { ?>
         <meta name="twitter:card" content="photo" />
-        <meta name="twitter:site" content="@your_twitter_username" />
+        <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />
         <meta name="twitter:title" content="<?php echo $file . '.' . $stype; ?>" />
-        <meta name="twitter:image" content="http://<?php echo $_SERVER['SERVER_NAME']; ?>/images/<?php echo "$type/$file.$stype"; ?>" />
+        <meta name="twitter:image" content="http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo IMAGESERVE_DIR; ?>/images/<?php echo "$type/$file.$stype"; ?>" />
         <meta name="twitter:url" content="http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
 <?php } ?>
     </head>

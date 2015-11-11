@@ -17,5 +17,8 @@ define('RAW_IMAGE_LINK', false);
 
 define('TWITTER_CARDS', true);
 
+define('IMAGESERVE_DIR', "");
+define('TWITTER_HANDLE', "@aerouk_");
+
 define('APP_NAME', "application name");
 define('PASSKEY', "password goes here");

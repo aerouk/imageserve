@@ -4,6 +4,8 @@ A ShareX image hosting solution for your own domain.
 
 ## application setup
 
+[**Video tutorial here**](https://www.youtube.com/edit?video_id=GtN79l5AGvQ)
+
 * Drag the contents of the `public/` directory into your webserver (in a folder, if you desire)
 * Configure the options in the `public/protected/config/config.php` file
 * Ensure the `public/images/` directory is writable by the web server

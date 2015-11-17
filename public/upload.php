@@ -16,31 +16,7 @@ if ($_FILES['image']['error'] > 0) {
 
 $dir = __DIR__ . '/images/';
 
-if ($_FILES['image']['type'] == "image/png") {
-    $hash = generateNewHash("png");
-
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $dir . "png/$hash.png")) {
-        die("success," . (RAW_IMAGE_LINK ? "images/png/$hash.png" : $hash));
-    }
-
-    die("error,e-503");
-} elseif ($_FILES['image']['type'] == "image/jpeg") {
-    $hash = generateNewHash("jpeg");
-
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $dir . "jpeg/$hash.jpg")) {
-        die("success," . (RAW_IMAGE_LINK ? "images/jpeg/$hash.jpg" : "j/$hash"));
-    }
-
-    die("error,e-503");
-} elseif ($_FILES['image']['type'] == "image/gif") {
-    $hash = generateNewHash("gif");
-
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $dir . "gif/$hash.gif")) {
-        die("success," . (RAW_IMAGE_LINK ? "images/gif/$hash.gif" : "g/$hash"));
-    }
-
-    die("error,e-503");
-}
+saveImage($_FILES['image']['type'], $_FILES['image']['tmp_name']);
 
 function generateNewHash($type)
 {
@@ -56,4 +32,25 @@ function generateNewHash($type)
     } else {
         return generateNewHash($type);
     }
+}
+
+function saveImage($mimeType, $tempName)
+{
+    global $dir;
+
+    switch ($mimeType) {
+        case "image/png":   $type = "png"; break;
+        case "image/jpeg":  $type = "jpg"; break;
+        case "image/gif":   $type = "gif"; break;
+
+        default: die("error,e-418");
+    }
+
+    $hash = generateNewHash($type);
+
+    if (move_uploaded_file($tempName, $dir . "$type/$hash.$type")) {
+        die("success," . (RAW_IMAGE_LINK ? $dir . "$type/$hash.$type" : ($type == "png" ? "" : substr($type, 0, 1) . "/") . "$hash"));
+    }
+
+    die("error,e-503");
 }

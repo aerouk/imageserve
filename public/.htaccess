@@ -13,5 +13,6 @@ RewriteEngine On
 RewriteRule  ^/?$                           viewer.php                      [L]
 
 RewriteRule  ^g/([^/\.]+)(.gif)?/?$         viewer.php?type=gif&file=$1     [L]
+RewriteRule  ^m/([^/\.]+)(.mp4)?/?$         viewer.php?type=mp4&file=$1     [L]
 RewriteRule  ^j/([^/\.]+)(.jpg|.jpeg)?/?$   viewer.php?type=jpeg&file=$1    [L]
 RewriteRule  ^([^/\.]+)(.png)?/?$           viewer.php?type=png&file=$1     [L]

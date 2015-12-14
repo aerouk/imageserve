@@ -31,11 +31,19 @@ if (RAW_IMAGE && strpos($_SERVER['HTTP_USER_AGENT'], "Twitterbot") === false) {
 
     fpassthru($filecontents);
     exit;
-} else {
-    $time = microtime();
-    $time = explode(' ', $time);
-    $time = $time[1] + $time[0];
-    $start = $time;
+} elseif ($type == "mp4") {
+        $time = microtime();
+        $time = explode(' ', $time);
+        $time = $time[1] + $time[0];
+        $start = $time;
 
-    require_once(__DIR__ . '/protected/templates/viewer.phtml');
+        require_once(__DIR__ . '/protected/templates/video-viewer.phtml');
+} else {
+        $time = microtime();
+        $time = explode(' ', $time);
+        $time = $time[1] + $time[0];
+        $start = $time;
+
+        require_once(__DIR__ . '/protected/templates/viewer.phtml');
+            
 }

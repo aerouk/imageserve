@@ -1,0 +1,50 @@
+<?php
+    $stype = ($type == "jpeg") ? "jpg" : $type;
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title><?php echo APP_NAME . " - $file.$stype"; ?></title>
+        <link rel="stylesheet" href="/assets/css/style.css">
+<?php if (TWITTER_CARDS) { ?>
+        <meta name="twitter:card" content="video" />
+        <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />
+        <meta name="twitter:title" content="<?php echo $file . '.' . $stype; ?>" />
+        <meta name="twitter:player" content="http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo IMAGESERVE_DIR; ?>/images/<?php echo "$type/$file.$stype"; ?>" />
+        <meta name="twitter:url" content="http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
+<?php } ?>
+    </head>
+
+    <body>
+        <h1>
+            <?php echo "$file.$stype"; ?> &middot;
+
+            <abbr title="Value rounded to the nearest kb.">
+                ~<?php echo round($filesize / 1024, 0); ?>kb
+            </abbr>
+        </h1>
+
+        <div class="container">
+            <video controls autoplay width="1280" height="720" >
+                 <source src="/images/<?php echo "$type/$file.$type"; ?>" type="video/mp4">
+            </video>
+        </div>
+
+        <?php
+            $time = microtime();
+            $time = explode(' ', $time);
+            $time = $time[1] + $time[0];
+            $finish = $time;
+            $total_time = round(($finish - $start), 4);
+        ?>
+
+        <p>
+            <a href="https://github.com/aerouk/imageserve">
+                Powered by <b>imageserve</b>
+            </a>
+
+            &middot; Page generated in <?php echo $total_time; ?> seconds
+        </p>
+    </body>
+</html>

@@ -6,7 +6,7 @@ if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
     die("error,e-401");
 }
 
-if ( ! ((filesize($_FILES['file']['tmp_name'])) && $_FILES['file']['type'] == "file/png" || $_FILES['file']['type'] == "file/jpeg" || $_FILES['file']['type'] == "image/gif" || $_FILES['file']['type'] == "video/mp4")) {
+if ( ! ((filesize($_FILES['file']['tmp_name'])) && $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/gif" || $_FILES['file']['type'] == "video/mp4")) {
     die("error,e-418");
 }
 

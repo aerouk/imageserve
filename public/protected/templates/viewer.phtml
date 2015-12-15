@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo APP_NAME . " - $file.$stype"; ?></title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
 <?php if (TWITTER_CARDS) { ?>
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />
@@ -26,7 +26,13 @@
         </h1>
 
         <div class="container">
-            <img src="images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
+            <?php if ($stype == mp4): ?>
+                <video controls autoplay width="1280" height="720" >
+                     <source src="/images/<?php echo "$type/$file.$type"; ?>" type="video/mp4">
+                </video>
+            <?php else: ?>
+                <img src="images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
+            <?php endif; ?>
         </div>
 
         <?php

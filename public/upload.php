@@ -6,17 +6,17 @@ if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
     die("error,e-401");
 }
 
-if ( ! ((getimagesize($_FILES['image']['tmp_name'])) && $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/gif")) {
+if ( ! ((filesize($_FILES['file']['tmp_name'])) && $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/gif" || $_FILES['file']['type'] == "video/mp4")) {
     die("error,e-418");
 }
 
-if ($_FILES['image']['error'] > 0) {
+if ($_FILES['file']['error'] > 0) {
     die("error,e-503");
 }
 
 $dir = __DIR__ . '/images/';
 
-saveImage($_FILES['image']['type'], $_FILES['image']['tmp_name']);
+saveImage($_FILES['file']['type'], $_FILES['file']['tmp_name']);
 
 function generateNewHash($type)
 {
@@ -42,6 +42,7 @@ function saveImage($mimeType, $tempName)
         case "image/png":   $type = "png"; break;
         case "image/jpeg":  $type = "jpg"; break;
         case "image/gif":   $type = "gif"; break;
+        case "video/mp4":   $type = "mp4"; break;
 
         default: die("error,e-418");
     }

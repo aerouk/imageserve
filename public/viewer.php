@@ -36,6 +36,5 @@ if (RAW_IMAGE && strpos($_SERVER['HTTP_USER_AGENT'], "Twitterbot") === false) {
     $time = explode(' ', $time);
     $time = $time[1] + $time[0];
     $start = $time;
-
     require_once(__DIR__ . '/protected/templates/viewer.phtml');
 }

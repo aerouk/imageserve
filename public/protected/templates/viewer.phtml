@@ -1,24 +1,24 @@
 <?php
-    $stype = ($type == "jpeg") ? "jpg" : $type;
+    $imgurl = IMAGESERVE_DIR . "/images/$type/$file.$type";
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title><?php echo APP_NAME . " - $file.$stype"; ?></title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <title><?php echo APP_NAME . " - $file.$type"; ?></title>
+        <link rel="stylesheet" href="/assets/css/style.css">
 <?php if (TWITTER_CARDS) { ?>
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />
-        <meta name="twitter:title" content="<?php echo $file . '.' . $stype; ?>" />
-        <meta name="twitter:image" content="http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo IMAGESERVE_DIR; ?>/images/<?php echo "$type/$file.$stype"; ?>" />
+        <meta name="twitter:title" content="<?php echo $file . '.' . $type; ?>" />
+        <meta name="twitter:image" content="http://<?php echo $_SERVER['SERVER_NAME'] . $imgurl; ?>" />
         <meta name="twitter:url" content="http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
 <?php } ?>
     </head>
 
     <body>
         <h1>
-            <?php echo "$file.$stype"; ?> &middot;
+            <?php echo "$file.$type"; ?> &middot;
 
             <abbr title="Value rounded to the nearest kb.">
                 ~<?php echo round($filesize / 1024, 0); ?>kb
@@ -26,7 +26,9 @@
         </h1>
 
         <div class="container">
-            <img src="images/<?php echo "$type/$file.$stype"; ?>" alt="<?php echo "$file.$stype"; ?>">
+            <a href="<?php echo $imgurl; ?>">
+                <img src="<?php echo $imgurl; ?>" alt="<?php echo "$file.$type"; ?>">
+            </a>
         </div>
 
         <?php

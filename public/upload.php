@@ -7,11 +7,11 @@ if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
 }
 
 if ( ! ((getimagesize($_FILES['image']['tmp_name'])) && $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/gif")) {
-    die("error,e-418");
+    die("error,e-415");
 }
 
 if ($_FILES['image']['error'] > 0) {
-    die("error,e-503");
+    die("error,e-500");
 }
 
 $dir = __DIR__ . '/images/';
@@ -40,10 +40,10 @@ function saveImage($mimeType, $tempName)
 
     switch ($mimeType) {
         case "image/png":   $type = "png"; break;
-        case "image/jpeg":  $type = "jpg"; break;
+        case "image/jpeg":  $type = "jpeg"; break;
         case "image/gif":   $type = "gif"; break;
 
-        default: die("error,e-418");
+        default: die("error,e-415");
     }
 
     $hash = generateNewHash($type);
@@ -52,5 +52,5 @@ function saveImage($mimeType, $tempName)
         die("success," . (RAW_IMAGE_LINK ? $dir . "$type/$hash.$type" : ($type == "png" ? "" : substr($type, 0, 1) . "/") . "$hash"));
     }
 
-    die("error,e-503");
+    die("error,e-500x");
 }

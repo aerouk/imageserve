@@ -10,10 +10,9 @@ if ($index) {
 }
 
 $type = $_GET['type'];
-$ext = str_replace("jpeg", "jpg", $_GET['type']);
 $file = $_GET['file'];
 
-$filelocation = __DIR__ . "/images/$type/$file.$ext";
+$filelocation = __DIR__ . "/images/$type/$file.$type";
 
 if ( ! file_exists($filelocation)) {
     header("HTTP/1.0 404 Not Found");

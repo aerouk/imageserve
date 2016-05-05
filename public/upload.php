@@ -49,7 +49,7 @@ function saveImage($mimeType, $tempName)
     $hash = generateNewHash($type);
 
     if (move_uploaded_file($tempName, $dir . "$type/$hash.$type")) {
-        die("success," . (RAW_IMAGE_LINK ? $dir . "$type/$hash.$type" : ($type == "png" ? "" : substr($type, 0, 1) . "/") . "$hash"));
+        die("success," . (RAW_IMAGE_LINK ? $dir . "$type/$hash.$type" : ($type == "png" ? "" : substr($type, 0, 1) . "/") . "$hash" . (IMAGE_EXTENSION ? ".$type" : "")));
     }
 
     die("error,e-500x");

@@ -27,7 +27,7 @@ function generateNewHash($type)
         $str .= substr($an, rand(0, strlen($an) - 1), 1);
     }
 
-    if ( ! file_exists(__DIR__ . "/images/$type/$str")) {
+    if ( ! file_exists(__DIR__ . "/images/$type/$str.$type")) {
         return $str;
     } else {
         return generateNewHash($type);

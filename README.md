@@ -1,9 +1,7 @@
 # imageserve
-
 A ShareX image hosting solution for your own domain.
 
 ## application setup
-
 [**Video tutorial here**](https://www.youtube.com/watch?v=GtN79l5AGvQ)
 
 * Drag the contents of the `public/` directory into your webserver (in a folder, if you desire)
@@ -13,5 +11,7 @@ A ShareX image hosting solution for your own domain.
 If you're having issues with setting up on IIS, please see [**here**](https://github.com/aerouk/imageserve/wiki/IIS-Issues).
 
 ## ShareX setup
-
 See instructions at [**/wiki/Setup**](https://github.com/aerouk/imageserve/wiki/Setup).
+
+## Error Troubleshooting
+Covered [**in the wiki**](https://github.com/aerouk/imageserve/wiki/Error-Troubleshooting).

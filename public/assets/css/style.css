@@ -1,15 +1,11 @@
 body {
-  background-color: #ECF3FF;
+  background-color: #ecf3ff;
   font-family: "Helvetica Neue", Arial, sans-serif;
   text-align: center;
 }
 
-p {
-  font-size: 12px;
-}
-
 a {
-  color: #0066CC;
+  color: #06c;
   text-decoration: none;
 }
 
@@ -23,32 +19,36 @@ abbr[title] {
 
 abbr[title],
 abbr[data-original-title] {
-  cursor: help;
   border-bottom: 1px dotted #b4bcc2;
+  cursor: help;
 }
 
 img {
-  border: 1px solid #FFFFFF;
+  border: 1px solid #fff;
   -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  max-width:100%;
-  max-height:100%;
+     -moz-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 img:hover {
   border: 1px solid #d3d3d3;
   -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+
+p {
+  font-size: 12px;
 }
 
 .container {
-  background-color: #FFFFFF;
+  background-color: #fff;
   border-radius: 5px;
   margin: 0 auto;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
   width: auto;
 }

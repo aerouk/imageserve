@@ -1,5 +1,6 @@
 <?php
     $imgurl = IMAGESERVE_DIR . "/images/$type/$file.$type";
+    $protocol = isset($_SERVER['https']) && $_SERVER['https'] != "off" ? "https" : "http";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +12,8 @@
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />
         <meta name="twitter:title" content="<?php echo $file . '.' . $type; ?>" />
-        <meta name="twitter:image" content="http://<?php echo $_SERVER['SERVER_NAME'] . $imgurl; ?>" />
-        <meta name="twitter:url" content="http://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
+        <meta name="twitter:image" content="<?php echo $protocol; ?>://<?php echo $_SERVER['SERVER_NAME'] . $imgurl; ?>" />
+        <meta name="twitter:url" content="<?php echo $protocol; ?>://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
 <?php } ?>
     </head>
 

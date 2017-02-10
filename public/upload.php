@@ -2,11 +2,13 @@
 
 require_once __DIR__ . '/protected/config/config.php';
 
+$allowedTypes = array('image/png', 'image/jpeg', 'image/gif', 'video/webm');
+
 if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
     die('error,e-401');
 }
 
-if ( ! ((getimagesize($_FILES['image']['tmp_name'])) && $_FILES['image']['type'] == 'image/png' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/gif')) {
+if ( ! (filesize($_FILES['image']['tmp_name']) > 0 && in_array($_FILES['image']['type'], $allowedTypes))) {
     die('error,e-415');
 }
 
@@ -38,14 +40,8 @@ function saveImage($mimeType, $tempName)
 {
     global $dir;
 
-    switch ($mimeType) {
-        case 'image/png':   $type = 'png'; break;
-        case 'image/jpeg':  $type = 'jpeg'; break;
-        case 'image/gif':   $type = 'gif'; break;
-
-        default: die('error,e-415');
-    }
-
+    $mimeTypeArray = explode('/', $mimeType);
+    $type = $mimeTypeArray[1];
     $hash = generateNewHash($type);
 
     if (move_uploaded_file($tempName, $dir . "$type/$hash.$type")) {

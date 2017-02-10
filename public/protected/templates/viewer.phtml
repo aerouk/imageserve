@@ -27,9 +27,15 @@
         </h1>
 
         <div class="container">
+            <?php if ($type != "webm"): ?>
             <a href="<?php echo $imgurl; ?>">
                 <img src="<?php echo $imgurl; ?>" alt="<?php echo "$file.$type"; ?>">
             </a>
+            <?php else: ?>
+            <video width="1280" height="720" controls>
+                <source src="<?php echo $imgurl; ?>" type="video/webm">
+            </video>
+            <?php endif; ?>
         </div>
 
         <?php

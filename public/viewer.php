@@ -3,10 +3,10 @@
 require_once __DIR__ . '/protected/config/config.php';
 
 $types = array(
-    "png" => "image/png",
-    "jpeg" => "image/jpeg",
-    "gif" => "image/gif",
-    "webm" => "video/webm"
+    'png'  => 'image/png',
+    'jpeg' => 'image/jpeg',
+    'gif'  => 'image/gif',
+    'webm' => 'video/webm',
 );
 
 $index = ! (isset($_GET['type']) && isset($_GET['file']));
@@ -32,8 +32,8 @@ $filesize = filesize($filelocation);
 if (RAW_IMAGE && strpos($_SERVER['HTTP_USER_AGENT'], 'Twitterbot') === false) {
     $filecontents = fopen($filelocation, 'rb');
 
-    header("Content-type: " . $types[$type]);
-    header("Content-length: " . $filesize);
+    header('Content-type: ' . $types[$type]);
+    header('Content-length: ' . $filesize);
 
     fpassthru($filecontents);
     exit;

@@ -13,7 +13,7 @@
         <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />
         <meta name="twitter:title" content="<?php echo $file . '.' . $type; ?>" />
         <meta name="twitter:image" content="<?php echo $protocol; ?>://<?php echo $_SERVER['SERVER_NAME'] . $imgurl; ?>" />
-        <meta name="twitter:url" content="<?php echo $protocol; ?>://<?php echo $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>" />
+        <meta name="twitter:url" content="<?php echo $protocol; ?>://<?php echo $_SERVER['SERVER_NAME'] . htmlspecialchars($_SERVER['REQUEST_URI']); ?>" />
 <?php } ?>
     </head>
 

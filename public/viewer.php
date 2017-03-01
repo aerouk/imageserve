@@ -21,7 +21,7 @@ $file = $_GET['file'];
 
 $filelocation = __DIR__ . "/images/$type/$file.$type";
 
-if ( ! file_exists(realpath($filelocation)) || ! array_key_exists($type, $types) ) {
+if ( ! file_exists(realpath($filelocation)) || ! array_key_exists($type, $types)) {
     header('HTTP/1.0 404 Not Found');
     include_once __DIR__ . '/protected/templates/error.phtml';
     die();

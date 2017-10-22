@@ -1,13 +1,14 @@
 <?php
     $imgurl = IMAGESERVE_DIR . "/images/$type/$file.$type";
-    $protocol = isset($_SERVER['https']) && $_SERVER['https'] != "off" ? "https" : "http";
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "off" ? "https" : "http";
+    $stylesheetDir = IMAGESERVE_DIR . "/assets/css/style.css";
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title><?php echo APP_NAME . " - $file.$type"; ?></title>
-        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="<?php echo $stylesheetDir; ?>">
 <?php if (TWITTER_CARDS) { ?>
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:site" content="<?php echo TWITTER_HANDLE; ?>" />

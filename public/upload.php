@@ -4,8 +4,24 @@ require_once __DIR__ . '/protected/config/config.php';
 
 $allowedTypes = array('image/png', 'image/jpeg', 'image/gif', 'video/webm');
 
-if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
-    die('error,e-401');
+if ( PASSKEY != '' ) {
+	if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
+		die('error,e-401');
+	}
+}
+
+if (TOKENAUTH){
+	if ( ! isset($_POST['token'])) {
+		die('error,e-401');
+	}
+	$token = $_POST['token'];
+	$table = SQL_TABLE;
+	$mysqli = new mysqli(SQL_HOSTNAME,SQL_USERNAME,SQL_PASSWORD,SQL_DATABASE);
+	$result = $mysqli->query("SELECT * FROM $table WHERE token = '$token'");
+	if($result->num_rows == 0) {
+		 die('error,e-401');
+	}
+	$mysqli->close();
 }
 
 if ( ! (filesize($_FILES['image']['tmp_name']) > 0 && in_array($_FILES['image']['type'], $allowedTypes))) {

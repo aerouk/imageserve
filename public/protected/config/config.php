@@ -25,3 +25,12 @@ define('TWITTER_HANDLE', '@aerouk_');
 
 define('APP_NAME', 'application name');
 define('PASSKEY', 'password goes here');
+
+//SQL Settings
+define('TOKENAUTH', false);
+define('SQL_HOSTNAME', 'localhost');
+define('SQL_USERNAME', 'imageserve');
+define('SQL_PASSWORD', '');
+define('SQL_DATABASE', 'imageserve');
+define('SQL_TABLE', 'auth');
+

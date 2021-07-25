@@ -6,7 +6,10 @@ foreach ($types as $type) {
 }
 
 // required
-if (getenv('PASSKEY') === false) die('PASSKEY must not be unset!');
+if (getenv('PASSKEY') === false) {
+    http_response_code(500);
+    die('PASSKEY must not be unset!');
+}
 
 // defaults
 $IMAGESERVE_DIR = getenv('IMAGESERVE_DIR') !== false ? getenv('IMAGESERVE_DIR') : '';

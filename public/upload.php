@@ -5,14 +5,17 @@ require_once __DIR__ . '/protected/config/config.php';
 $allowedTypes = array('image/png', 'image/jpeg', 'image/gif', 'video/webm');
 
 if ( ! isset($_POST['password']) || $_POST['password'] !== PASSKEY) {
+    http_response_code(401);
     die('error,e-401');
 }
 
 if ( ! (filesize($_FILES['image']['tmp_name']) > 0 && in_array($_FILES['image']['type'], $allowedTypes))) {
+    http_response_code(415);
     die('error,e-415');
 }
 
 if ($_FILES['image']['error'] > 0) {
+    http_response_code(500);
     die('error,e-500');
 }
 
@@ -48,5 +51,6 @@ function saveImage($mimeType, $tempName)
         die('success,' . (RAW_IMAGE_LINK ? $dir . "$type/$hash.$type" : ($type == 'png' ? '' : substr($type, 0, 1) . '/') . "$hash" . (IMAGE_EXTENSION ? ".$type" : '')));
     }
 
+    http_response_code(500);
     die('error,e-500x');
 }

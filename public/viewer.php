@@ -19,10 +19,20 @@ if ($index) {
 $type = $_GET['type'];
 $file = $_GET['file'];
 
+if ($type == '') {
+    // try to guess the type
+    foreach ($types as $i => $v) {
+        if (file_exists(__DIR__ . "/images/$i/$file.$i")) {
+            $type = $i;
+            break;
+        }
+    }
+}
+
 $filelocation = __DIR__ . "/images/$type/$file.$type";
 
-if ( ! file_exists(realpath($filelocation)) || ! array_key_exists($type, $types)) {
-    header('HTTP/1.0 404 Not Found');
+if ( ! array_key_exists($type, $types) || ! file_exists($filelocation)) {
+    http_response_code(404);
     include_once __DIR__ . '/protected/templates/error.phtml';
     die();
 }

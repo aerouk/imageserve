@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  imageserve:
+    build: .
+    image: imageserve
+    container_name: imageserve
+    ports:
+      - "8080:80"
+    volumes:
+      - "/path/to/dir:/var/www/html/images"
+    environment:
+      PASSKEY: 'CHANGE THIS'
+      # UPLOAD_LIMIT: 64M
+      # RAW_IMAGE: 1
+      # RAW_IMAGE_LINK: 1
+      # IMAGE_EXTENSION: 1
+      # TWITTER_CARDS: 1
+      # IMAGESERVE_DIR: '/imageserve'
+      # TWITTER_HANDLE: '@someone'
+      # APP_NAME: 'application name'
+    restart: unless-stopped
